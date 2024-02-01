@@ -1,0 +1,70 @@
+import { Container } from "./style";
+
+
+import { GoPencil } from "react-icons/go";
+import { FaRegHeart } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+
+import { Button } from "../button";
+import { useState } from "react";
+
+import { api } from "../../services/api";
+
+
+export function Card({ data, onClickDetails, onClickEdit, ...rest})  {
+    const [mealsCount, setMealsCount] = useState(0)
+
+    const imgURL = data.img? `${api.defaults.baseURL}/files/${data.img}` : "";
+
+    
+    function handleCountMeals() {
+        setMealsCount(mealsCount + 1);
+    }
+    function handleDeleteMeals() {
+        if (mealsCount > 0)
+        setMealsCount(mealsCount - 1);
+    }
+
+    function formatPrice(price) {
+         
+        const formattedPrice = parseFloat(price).toFixed(2);
+
+        const priceWithComma = formattedPrice.replace(".", ",")
+
+        return `$${priceWithComma}`;
+    }
+    return(
+        <Container {...rest}>
+          
+            <div className="Icons">
+                <GoPencil fontSize={25} className="edit" onClick={() => onClickEdit(data.id)}/>
+                <FaRegHeart fontSize={25} className="favorite"/> 
+            </div>
+            
+            <div className="Img" onClick={() => onClickDetails(data.id)}>
+                <img src={imgURL} />
+            </div>
+
+            <h2>{data.title} <FaChevronRight fontSize={16}/> </h2>
+
+            <p>{data.description}</p>
+
+            <p className="price" >{formatPrice(data.price)}</p>
+            <div className="add">
+                <div className="Add">
+                    <button onClick={handleDeleteMeals}>
+                      <FaMinus fontSize={25}/>
+                    </button>
+                    <span>{mealsCount}</span>
+                    <button onClick={handleCountMeals}>
+                        <FaPlus fontSize={25}/>
+                    </button>
+                </div>
+                <Button title="incluir"/>
+            </div>
+          
+        </Container>
+    )
+}
