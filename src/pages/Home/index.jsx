@@ -15,7 +15,6 @@ import { api } from "../../services/api"
 
 import { Container, Nav} from "./style"
 import { useNavigate } from "react-router-dom"
-
  
 
 export function Home() {
@@ -43,13 +42,8 @@ export function Home() {
         fetchMeals();
     }, [search ]);
 
-    useEffect(() => {
-      async function fetchIngredient() {
-        const response = await api.get(`/ingredients?name=${search}`);
-        setIngredients(response.data)
-      }
-      fetchIngredient()
-    }, [search]);
+    
+    
 
     return (
     <Container>
