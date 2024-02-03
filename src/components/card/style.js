@@ -16,27 +16,26 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.COLORS.DARK_200};
 
   color: ${({ theme }) => theme.COLORS.LIGHT_300};
-  
+
   .Icons {
     width: 100%;
     display: flex;
     justify-content: end;
-    
   }
 
-  .favorite {
-    display: none;
+  .favorite.active {
+    color: ${({ theme }) => theme.COLORS.TOMATO_200}
+    
+    
   }
 
   .Img {
     display: flex;
   }
-  
 
   .Img img {
     width: 190px;
     height: 190px;
-   
   }
 
   .favorite {
@@ -45,7 +44,6 @@ export const Container = styled.div`
 
   .edit {
     cursor: pointer;
-    
   }
 
   h2 {
@@ -78,7 +76,6 @@ export const Container = styled.div`
     max-width: 30px;
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
     width: 1px;
-    ;
   }
 
   .Add svg:hover {
@@ -86,13 +83,12 @@ export const Container = styled.div`
   }
 
   .add {
-    display: none;
+    display: flex;
     width: 100%;
     height: 45px;
     gap: 16px;
     justify-content: center;
     align-items: center;
-    
   }
 
   .add button {

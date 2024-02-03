@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
+
 import { Container } from "./style" 
 
 import { api } from "../../services/api"
@@ -11,11 +14,15 @@ import { Back } from "../../components/back"
 import { Ingredient } from "../../components/ingredient"
 import { Button } from "../../components/button"
 
-
+import { useAuth } from "../../hooks/auth";
+import { USER_ROLE } from "../../utils/roles";
 
 
 export function Details() {
+    const { user } = useAuth();
+
     const [data, setData] = useState(null)
+    const [mealsCount, setMealsCount] = useState(1)
 
     const params = useParams()
     const navigate = useNavigate()
@@ -29,6 +36,22 @@ export function Details() {
     function handleEdit() {
         navigate(`/edit/${data.id}`)
     }
+
+    function handleCountMeals() {
+        setMealsCount(mealsCount + 1);
+    }
+    function handleDeleteMeals() {
+        if (mealsCount > 0)
+        setMealsCount(mealsCount - 1);
+    }    
+    function formatPrice(price) {
+         
+        const formattedPrice = parseFloat(price).toFixed(2);
+
+        const priceWithComma = formattedPrice.replace(".", ",")
+
+        return `R$ ${priceWithComma}`;
+    }    
 
     useEffect(() => { 
       async function fetchNote() {
@@ -70,11 +93,37 @@ export function Details() {
                             }
                         </div>
                         }
-                        <div className="button">
-                            <Button
-                            onClick={handleEdit}
-                            title="Editar prato"/>
-                        </div>
+                        {
+                            user.role === USER_ROLE.ADMIN &&
+                            <>
+                             <div className="button">
+                               <Button
+                                 onClick={handleEdit}
+                                 title="Editar prato"/>
+                             </div>
+                            </>
+                        }
+                        {
+                            user.role === USER_ROLE.CUSTOMER &&
+                            <>
+                              <div className="add">
+                                <div className="Add">
+                                   <button onClick={handleDeleteMeals}>  
+                                      <FaMinus fontSize={15}/>
+                                   </button>
+                                      <span>{mealsCount}</span>
+                                    <button onClick={handleCountMeals}>
+                                      <FaPlus fontSize={15}/>
+                                    </button>                                                          
+                                </div>
+                                  <Button
+                                   title={`Incluir    \u2219    ${formatPrice(data.price)}`}
+                                  />
+                              </div>
+
+                            </>
+                        }
+
                     </div>
                 </div>     
 

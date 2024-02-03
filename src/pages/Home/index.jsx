@@ -67,7 +67,7 @@ export function Home() {
                 meals.filter(meal => meal.category == "Refeição").length > 0 && 
                   <Swiper
                     navigation={true}
-                    slidesPerView={4}
+                    slidesPerView={3.9}
                     spaceBetween={200}
                     loop={true}
                     
@@ -98,7 +98,7 @@ export function Home() {
                 meals.filter(meal => meal.category == "Sobremesas").length > 0 && 
                   <Swiper
                     navigation={true}
-                    slidesPerView={4}
+                    slidesPerView={3.9}
                     spaceBetween={200}
                     loop={true}
                     
@@ -107,12 +107,14 @@ export function Home() {
                   
                   >
                     {
-                        meals.filter(meal => meal.category === "Sobremesas").map((item, index) => (
+                        meals.filter(meal => meal.category === "Sobremesas").map(meal  => (
                         <SwiperSlide
-                        key={String(index)}
+                        key={String(meal.id)}
                         >
                             <Card
-                            data={item}
+                            data={meal}
+                            onClickDetails={handleDetails}
+                            onClickEdit={handleEdit}
                             />
                         </SwiperSlide>
                         ))
@@ -125,7 +127,7 @@ export function Home() {
                 meals.filter(meal => meal.category == "Bebidas").length > 0 && 
                   <Swiper
                     navigation={true}
-                    slidesPerView={4}
+                    slidesPerView={3.9}
                     spaceBetween={200}
                     loop={true}
                     
@@ -134,12 +136,15 @@ export function Home() {
                   
                   >
                     {
-                        meals.filter(meal => meal.category === "Bebidas").map((item, index) => (
+                        meals.filter(meal => meal.category === "Bebidas").map(meal  => (
                         <SwiperSlide
-                        key={String(index)}
+                        key={String(meal.id)}
                         >
                             <Card
-                            data={item}
+                            data={meal}
+                            onClickDetails={handleDetails}
+                            onClickEdit={handleEdit}
+
                             />
                         </SwiperSlide>
                         ))

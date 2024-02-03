@@ -1,6 +1,7 @@
 
 import { GoSignOut } from "react-icons/go";
 import { IoSearch } from "react-icons/io5";
+import { PiReceipt } from "react-icons/pi";
 
 import { useNavigate } from "react-router-dom";
 
@@ -10,8 +11,9 @@ import { Button } from "../button"
 
 import { Container, NewDish, Logout } from "./style"
 import { useAuth } from "../../hooks/auth";
+import { USER_ROLE } from "../../utils/roles";
 
-export function Header({...props}) {
+export function Header({ ...props}) {
     const { user, signOut } = useAuth();
 
     const navigation = useNavigate();
@@ -25,7 +27,7 @@ export function Header({...props}) {
         <div className="brand">
             <Brand  
                title="food explorer"
-               typeUser="admin"
+               typeUser={user.role === USER_ROLE.CUSTOMER ? null : user.role}
             />
         </div>
         <div className="input">
@@ -34,12 +36,32 @@ export function Header({...props}) {
              placeholder="Busque por pratos ou ingredientes"
              {...props}
             />
-        </div>    
-        <NewDish to="/new" >
-             <Button 
-            title="Novo prato"
-            />
-        </NewDish>
+        </div>
+        {    
+          user.role === USER_ROLE.ADMIN &&
+          <>
+            <NewDish to="/new" >
+              <Button       
+                 title="Novo prato"   
+              />      
+            </NewDish>
+          </>   
+        }  
+
+        {  
+           user.role === USER_ROLE.CUSTOMER &&
+            <>
+            <div className="buttonRequest">
+              <Button
+                icon={PiReceipt}
+                title="Pedidos"
+                score={`(1)`}
+              />
+              
+            </div>              
+            </>
+        }
+
             
         <Logout onClick={handleSignOut}>
             <GoSignOut />

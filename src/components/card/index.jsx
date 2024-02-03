@@ -12,12 +12,17 @@ import { useState } from "react";
 
 import { api } from "../../services/api";
 
+import { useAuth } from "../../hooks/auth";
+import { USER_ROLE } from "../../utils/roles";
 
 export function Card({ data, onClickDetails, onClickEdit, ...rest})  {
-    const [mealsCount, setMealsCount] = useState(0)
+    const { user } = useAuth();
+
+    const [mealsCount, setMealsCount] = useState(1)
+    const [isFavorite, setIsFavorite] = useState(false)
+    const [mealsSelection, setMealsSelection] = useState({})
 
     const imgURL = data.img? `${api.defaults.baseURL}/files/${data.img}` : "";
-
     
     function handleCountMeals() {
         setMealsCount(mealsCount + 1);
@@ -35,12 +40,35 @@ export function Card({ data, onClickDetails, onClickEdit, ...rest})  {
 
         return `$${priceWithComma}`;
     }
+    
+    function handleFavorite(){
+        setIsFavorite(!isFavorite);
+    }
+   
+
     return(
         <Container {...rest}>
           
             <div className="Icons">
-                <GoPencil fontSize={25} className="edit" onClick={() => onClickEdit(data.id)}/>
-                <FaRegHeart fontSize={25} className="favorite"/> 
+                {
+                   user.role === USER_ROLE.ADMIN &&  
+                 <>   
+                   <GoPencil fontSize={25} className="edit" onClick={() => onClickEdit(data.id)}/>
+
+                </>
+                }
+                {
+                    user.role === USER_ROLE.CUSTOMER &&
+                    <>
+                      <FaRegHeart
+                       fontSize={25}
+                       className={isFavorite ? "favorite active" : "favorite"}
+                       onClick={handleFavorite} 
+
+                       />    
+                    </>
+                }
+                
             </div>
             
             <div className="Img" onClick={() => onClickDetails(data.id)}>
@@ -52,18 +80,25 @@ export function Card({ data, onClickDetails, onClickEdit, ...rest})  {
             <p>{data.description}</p>
 
             <p className="price" >{formatPrice(data.price)}</p>
+            {  
+              user.role === USER_ROLE.CUSTOMER &&
+             <>
             <div className="add">
                 <div className="Add">
                     <button onClick={handleDeleteMeals}>
                       <FaMinus fontSize={25}/>
                     </button>
-                    <span>{mealsCount}</span>
+                    <span>{mealsCount.toString().padStart(2, 0)}</span>
                     <button onClick={handleCountMeals}>
                         <FaPlus fontSize={25}/>
                     </button>
                 </div>
-                <Button title="incluir"/>
+                <Button title="Incluir"
+                 
+                />
             </div>
+            </>
+            } 
           
         </Container>
     )

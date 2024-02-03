@@ -56,7 +56,19 @@ export const Container = styled.header`
   .button button {
     padding: 12px 32px;
   }
- 
+  
+  .buttonRequest {
+     width: 350px;
+   
+  } 
+
+  .buttonRequest button  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    
+  }
 `; 
 
 export const NewDish = styled(Link)`
