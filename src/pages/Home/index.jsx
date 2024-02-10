@@ -5,7 +5,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination';
 
-import {  Navigation , Pagination} from 'swiper/modules';
+import {  Navigation } from 'swiper/modules';
 
 import { Header } from "../../components/header"
 import { Footer } from "../../components/footer"
