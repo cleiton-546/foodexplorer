@@ -8,12 +8,12 @@ export const Container = styled.div`
 
   > h3 {
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 400;
   }
 
   > input {
-    font-size: 16px;
+    box-sizing: border-box;
     font-weight: 400;
     height: 48px;
     width: 100%;
@@ -22,11 +22,15 @@ export const Container = styled.div`
     border: none;
     outline: none;
     background-color: ${({ theme }) => theme.COLORS.DARK_800};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    
   }
 
   > svg {
-    margin-left: 16px;
+    margin-left: 1rem;
   }
 `;

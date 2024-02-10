@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   display: flex;
@@ -18,7 +19,22 @@ export const Container = styled.div`
 
   .brand svg {
     margin-top: 10px;
+  }
+  @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
 
+    .brand {
+      margin-right: 3.9rem;
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    padding: 1rem;
+   
   }
 `;
 
@@ -43,6 +59,7 @@ export const Form = styled.form`
     width: 100%;
     border: none;
     background-color: ${({ theme }) => theme.COLORS.DARK_900};
+    margin-top: 5px;
   }
 
   > div {
@@ -65,6 +82,15 @@ export const Form = styled.form`
       border: none;
       text-decoration: none;
     }
+  }
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    width: 100%;
+    margin: 0;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    margin-top: 0.5rem;
   }
 `;
 

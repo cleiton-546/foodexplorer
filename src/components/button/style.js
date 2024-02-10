@@ -6,16 +6,20 @@ export const Container = styled.button`
   background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
-  height: 50px;
+  height: 3.12rem;
   border: 0;
-  padding: 0 16px;
+  padding: 0 1rem;
   
   white-space: nowrap;
-  border-radius: 5px;
+  border-radius: 0.31rem;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.9rem;
 
   &:disabled {
     opacity: 0.5;
+  }
+
+  > svg {
+    font-size: 1.87rem;
   }
 `;

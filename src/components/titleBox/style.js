@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 
 export const Container = styled.section`
    width: 100%;
+  
     
   > h3 {
     margin-bottom: 16px ;

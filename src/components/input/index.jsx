@@ -11,7 +11,6 @@ export function Input({ icon: Icon, list, title, useDatalist,  ...rest  }) {
               <input
                 {...rest}
                 list={useDatalist ? list : undefined}
-                
                
               /> 
               {useDatalist && (

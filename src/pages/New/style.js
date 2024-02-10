@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   > main {
     padding: 40px 123px 193px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 400;
 
     .add {
@@ -17,12 +18,12 @@ export const Container = styled.div`
       display: flex;
       gap: 32px;
       .left {
-        width: 70%;
+        width: 100%;
       }
     }
-.name h3 {
-  margin-bottom: 16px;
-}
+    .name h3 {
+      margin-bottom: 16px;
+    }
 
     .inputImg {
       width: 50%;
@@ -73,9 +74,10 @@ export const Container = styled.div`
 
     .ingredient {
       display: flex;
-      height: 48px;
-      padding: 4px 8px;
-      gap: 16px;
+      flex-wrap: wrap;
+      padding: 4px 0.5rem;
+      gap: 1rem;
+      width: 100%;
 
       background-color: ${({ theme }) => theme.COLORS.DARK_800};
       border-radius: 8px;
@@ -94,6 +96,42 @@ export const Container = styled.div`
     .button button {
       width: 172px;
       background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    main {
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .inputImg {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .left {
+        width: 100%;
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .ingredients {
+        height: 100%;
+        flex-wrap: nowrap;
+      }
+
+      .value {
+        width: 100%;
+      }
     }
   }
 `;

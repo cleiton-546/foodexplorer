@@ -17,6 +17,10 @@ export function SignUp() {
   const navigate = useNavigate();
 
   function handleSignUp() {   
+    if(password.length <= 5){
+      return alert("A senha deve ter no mínimo seis caracteres")
+    }
+
     if(!name || !email || !password) {   
        return alert("Preencha todos os campos!")       
     }      
@@ -45,15 +49,16 @@ export function SignUp() {
             <Form>
                 <div>
                 <h2>Crie sua conta</h2>
-                
+                <div className="Input">
                 <Input
                   title="Seu nome"
                   placeholder="Exemplo: Maria da Silva"
                   type="text"
                   onChange={e => setName(e.target.value)}
                 />
+                </div>
                
-                
+                <div className="Input">
                 <Input
                   autoComplete="username"
                   title="Email"
@@ -61,8 +66,8 @@ export function SignUp() {
                   type="text"
                   onChange={e => setEmail(e.target.value)} 
                 />
-                
-               
+                </div>
+               <div className="Input"> 
                 <Input
                   title="Senha"
                   placeholder="No mínimo 6 caracteres"
@@ -70,7 +75,7 @@ export function SignUp() {
                   onChange={e => setPassword(e.target.value)}
                   autoComplete="current-password"
                   />
-                
+                </div>
                 
                 <Button 
                 title="Entrar" 

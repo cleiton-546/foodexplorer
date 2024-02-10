@@ -12,16 +12,17 @@ import { TextArea } from "../../components/textArea";
 import { Button } from "../../components/button";
 import { Footer } from "../../components/footer";
 import { TitleBox } from "../../components/titleBox";
+import { SideMenu } from "../../components/sideMenu";
 
 import { Container  } from './style'
 
 export function New() {
-  const [save, setSave] = useState(false);
+  const [save, setSave] = useState("");
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-
   const [price, setPrice] = useState("");
+  const [menuIsOpen, setMenuIsOpen] = useState(false) 
 
 
   const [ingredients, setIngredients] = useState([]);
@@ -72,6 +73,7 @@ export function New() {
     }
 
     setSave(true)
+   
  
     const formData = new FormData();
     formData.append("img", img);
@@ -79,11 +81,12 @@ export function New() {
     formData.append("category", category);
     formData.append("price", price);
     formData.append("description", description);
-
+    
     ingredients.map(ingredients => {
       formData.append("ingredients", ingredients)
     })
 
+    
     await api
      .post("/meals", formData
      )
@@ -96,12 +99,19 @@ export function New() {
       } 
      });
 
-     setSave(false);
+     setSave(false)
+
+     
    
   }
     return(
         <Container>
-            <Header />
+          
+          <SideMenu 
+            menuIsOpen={menuIsOpen}
+            onCloseMenu={() => setMenuIsOpen(false)}
+          /> 
+          <Header onOpenMenu={() => setMenuIsOpen(true)}/>          
             <main>
             <Back
             onClick={handleBack}

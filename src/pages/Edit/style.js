@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   > main {
@@ -16,8 +17,9 @@ export const Container = styled.div`
     .name {
       display: flex;
       gap: 32px;
+
       .left {
-        width: 70%;
+        width: 100%;
       }
     }
     .name h3 {
@@ -66,17 +68,17 @@ export const Container = styled.div`
       display: flex;
       width: auto;
       justify-content: space-between;
-      margin-top: 32px;
-      margin-bottom: 32px;
-      gap: 32px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      gap: 2rem;
     }
 
     .ingredient {
       display: flex;
-      height: 48px;
-      padding: 4px 8px;
-      gap: 16px;
-
+      flex-wrap: wrap;
+      padding: 4px 0.5rem;
+      gap: 1rem;
+      width: 100%;
       background-color: ${({ theme }) => theme.COLORS.DARK_800};
       border-radius: 8px;
     }
@@ -88,7 +90,7 @@ export const Container = styled.div`
     .button {
       display: flex;
       justify-content: flex-end;
-      gap: 32px;
+      gap: 2rem;
       margin-top: 28px;
     }
 
@@ -99,6 +101,45 @@ export const Container = styled.div`
 
     .button > :nth-child(1) {
       background-color: ${({ theme }) => theme.COLORS.DARK_800};
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    main {
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .inputImg {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .left {
+        width: 100%;
+      }
+
+      .section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .ingredients {
+        height: 100%;
+        flex-wrap: nowrap;
+        overflow: hidden;
+      }
+
+     
+
+      .value {
+        width: 100%;
+      }
     }
   }
 `;

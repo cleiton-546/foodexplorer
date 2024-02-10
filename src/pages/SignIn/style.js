@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     display: flex;
-    font-size: 30px;
+    font-size: 1.875rem;
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     font-weight: 700;
   }
@@ -17,11 +18,28 @@ export const Container = styled.div`
   .brand svg {
     margin-top: 10px;
   }
+  @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+
+    .brand {
+      margin-right: 3.90rem;
+      
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    padding: 1rem;
+   
+  }
 `;
 
 export const Form = styled.form`
-  margin: 50px 90px 50px 0;
-  border-radius: 16px;
+  margin: 3.125rem 5.625rem 3.125rem 0;
+  border-radius: 1rem;
   width: 56%;
 
   display: flex;
@@ -32,7 +50,7 @@ export const Form = styled.form`
 
   > div {
     display: flex;
-    padding: 64px;
+    padding: 4rem;
     width: 100%;
     height: 100%;
     flex-direction: column;
@@ -42,7 +60,7 @@ export const Form = styled.form`
     h2 {
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
       margin-bottom: 32px;
-      font-size: 32px;
+      font-size: 2rem;
       font-weight: 500;
 
     }
@@ -50,7 +68,7 @@ export const Form = styled.form`
     a {
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
       font-weight: 500;
-      font-size: 14px;
+      font-size: 0.875rem;
       margin-top: 32px;
       border: none;
       text-decoration: none;
@@ -70,7 +88,15 @@ export const Form = styled.form`
   .input h3 {
     margin-bottom: 8px;
   }
-`; 
+  
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    width: 100%;
+    margin: 0;
+    margin-top: 2rem;
+    
+  }
+ 
+  `; 
 
 
 

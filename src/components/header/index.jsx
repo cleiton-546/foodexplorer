@@ -1,4 +1,4 @@
-
+import { PiListBold } from "react-icons/pi";
 import { GoSignOut } from "react-icons/go";
 import { IoSearch } from "react-icons/io5";
 import { PiReceipt } from "react-icons/pi";
@@ -9,11 +9,11 @@ import { Brand } from "../brand"
 import { Input } from "../input"
 import { Button } from "../button"
 
-import { Container, NewDish, Logout } from "./style"
+import { Container, NewDish, Logout, Menu } from "./style"
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 
-export function Header({ ...props}) {
+export function Header({ onOpenMenu  ,...props}) {
     const { user, signOut } = useAuth();
 
     const navigation = useNavigate();
@@ -24,6 +24,11 @@ export function Header({ ...props}) {
    
     return(
     <Container>
+      <Menu onClick={onOpenMenu}>
+        <PiListBold />
+      </Menu>
+        
+       
         <div className="brand">
             <Brand  
                title="food explorer"
@@ -31,11 +36,12 @@ export function Header({ ...props}) {
             />
         </div>
         <div className="input">
+           <IoSearch/>
             <Input 
-             icon={IoSearch}
              placeholder="Busque por pratos ou ingredientes"
              {...props}
             />
+           
         </div>
         {    
           user.role === USER_ROLE.ADMIN &&
@@ -55,8 +61,13 @@ export function Header({ ...props}) {
               <Button
                 icon={PiReceipt}
                 title="Pedidos"
-                score={`(1)`}
+                score={`(0)`}
               />
+              <div className="receipt">
+                <PiReceipt />
+                <span>0</span>
+
+              </div>
               
             </div>              
             </>

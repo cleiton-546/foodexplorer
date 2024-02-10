@@ -48,6 +48,8 @@ export function Card({ data, onClickDetails, onClickEdit, ...rest})  {
 
     return(
         <Container {...rest}>
+        
+               
           
             <div className="Icons">
                 {
@@ -75,9 +77,9 @@ export function Card({ data, onClickDetails, onClickEdit, ...rest})  {
                 <img src={imgURL} />
             </div>
 
-            <h2>{data.title} <FaChevronRight fontSize={16}/> </h2>
+            <h2 className="title">{data.title} <FaChevronRight fontSize={16}/> </h2>
 
-            <p>{data.description}</p>
+            <p className="description">{data.description}</p>
 
             <p className="price" >{formatPrice(data.price)}</p>
             {  
@@ -93,13 +95,19 @@ export function Card({ data, onClickDetails, onClickEdit, ...rest})  {
                         <FaPlus fontSize={25}/>
                     </button>
                 </div>
-                <Button title="Incluir"
-                 
-                />
+                <div>
+                </div >
+                <div className="button">
+                   <Button title="Incluir" />
+                </div>
+                
+               
             </div>
+
             </>
+            
             } 
-          
+         
         </Container>
     )
 }

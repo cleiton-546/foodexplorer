@@ -13,6 +13,7 @@ import { TextArea } from "../../components/textArea";
 import { Button } from "../../components/button";
 import { Footer } from "../../components/footer";
 import { TitleBox } from "../../components/titleBox";
+import { SideMenu } from "../../components/sideMenu";
 
 import { Container } from './style';
 
@@ -21,21 +22,23 @@ import { setDate } from "date-fns";
 export function Edit() {
  const params = useParams();
 
-  const [save, setSave] = useState(false);
+  const [save, setSave] = useState(false)
+ 
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
+  const [menuIsOpen, setMenuIsOpen] = useState(false)  
 
   const [data, setData] = useState(null);
 
   const imgURL = data && `${api.defaults.baseURL}/files/${data.img}`
-  const [img, setImg] = useState();
+  const [img, setImg] = useState(imgURL);
   const [imgFile, setImgFile ] = useState(null)
 
-
+ 
 
   function handleChangeImg(event) {
     const file = event.target.files[0];
@@ -64,7 +67,7 @@ export function Edit() {
 
   async function handleUpdateMeal() {
     if(!img) {
-      return alert("Adicione a imagem do prato!")
+      return alert("Selecione a foto do prato!")
     }
 
     if(!title) {
@@ -87,6 +90,7 @@ export function Edit() {
       return alert("Selecione a descrição do prato!")
     }
 
+    setSave(true)
  
     const formData = new FormData();
     formData.append("img", imgFile);
@@ -98,7 +102,6 @@ export function Edit() {
     ingredients.map(ingredients => {
       formData.append("ingredients", ingredients)
     })
-    console.log(img)
 
     await api
      .put(`/meals/${params.id}`, formData)
@@ -111,6 +114,7 @@ export function Edit() {
       } 
      });
 
+     setSave(true);
        
     }    
     
@@ -150,7 +154,15 @@ export function Edit() {
 
     return(
         <Container>
-            <Header />
+       <SideMenu 
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+        /> 
+        <Header
+          onOpenMenu={() => setMenuIsOpen(true)}
+          onChange={(e) => setSearch(e.target.value)}
+        />          
+
           { data &&  
             <main>
             <Back

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
+import { PiReceipt } from "react-icons/pi";
 
 import { Container } from "./style" 
 
@@ -13,6 +14,7 @@ import { Footer } from "../../components/footer"
 import { Back } from "../../components/back"
 import { Ingredient } from "../../components/ingredient"
 import { Button } from "../../components/button"
+import { SideMenu } from "../../components/sideMenu";
 
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
@@ -23,6 +25,7 @@ export function Details() {
 
     const [data, setData] = useState(null)
     const [mealsCount, setMealsCount] = useState(1)
+    const [menuIsOpen, setMenuIsOpen] = useState(false)
 
     const params = useParams()
     const navigate = useNavigate()
@@ -64,8 +67,11 @@ export function Details() {
       
     return(
         <Container>
-            <Header />
-
+        <SideMenu 
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+        /> 
+        <Header onOpenMenu={() => setMenuIsOpen(true)}/> 
             { 
             data&&
             <main>
@@ -117,7 +123,9 @@ export function Details() {
                                     </button>                                                          
                                 </div>
                                   <Button
-                                   title={`Incluir    \u2219    ${formatPrice(data.price)}`}
+                                   className="includes"
+                                   icon={PiReceipt}
+                                   title={ `  Incluir    \u2219    ${formatPrice(data.price)}`}
                                   />
                               </div>
 
@@ -130,7 +138,7 @@ export function Details() {
             </main>
             }
 
-
+           
             <Footer/>
         </Container>
     )

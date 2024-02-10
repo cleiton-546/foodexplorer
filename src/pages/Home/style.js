@@ -1,105 +1,103 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 
 export const Container = styled.div`
-  > main {
-    padding: 150px 120px;
+  .main {
+    padding: 9.375rem 7.5rem;
   }
 
   .gradient {
-    background: 90deg, rgba(0, 10, 15, 0.27) 0%, #000a0f 100%;
-
-    > h2 {
-      margin-top: 47px;
-      margin-bottom: 15px;
-      color: ${({ theme }) => theme.COLORS.LIGHT_300};
-      font-size: 32px;
-      font-weight: 500;
-    }
-
-  .button {
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
     height: 100%;
     width: 100%;
 
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(
-        --Gradients-100,
-        linear-gradient(80deg, rgba(0, 10, 15, 0.27) 90%, #000a0f 100%)
-      ),
-      var(
-        --Gradients-100,
-        linear-gradient(270deg, rgba(0, 10, 15, 0.27) 90%, #000a0f 100%)
-      );
-  }
-
-  .swiper-wrapper {
-    justify-content: start;
-    align-items: center;
+    .meals {
+      color: ${({ theme }) => theme.COLORS.LIGHT_300};
+      font-size: 2rem;
+      font-weight: 500;
+    }
   }
 
   .swiper-slide {
-    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide div {
+    object-fit: cover;
   }
 
   .swiper-button-prev {
-    justify-content: start;
-    width: 10%;
-    height: 100%;
-    background: linear-gradient(
-      98deg,
-      #000a0f 0%,
-      rgba(0, 10, 15, 0.272541) 100%
-    );
+      justify-content: start;
+      width: 10%;
+      height: 100%;
+      background: linear-gradient(
+        98deg,
+        #000a0f 0%,
+        rgba(0, 10, 15, 0.272541) 100%
+      );
 
-    left: 0px;
-    top: 1.375rem;
-  }
-
-  .swiper-button-next {
-    width: 10%;
-    height: 100%;
-    background: linear-gradient(
-      98deg,
-      rgba(0, 10, 15, 0.272541) 0%,
-      #000a0f 100%
-    );
-    right: 0;
-    top: 1.375rem;
-    padding-right: 0.5rem;
-  }
-
-  .swiper-button-prev::after,
-  .swiper-button-next::after {
-   
-    font-size: 30px;
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-  }
+      left: 0px;
+      top: 1.375rem;
+    }
     
+
+    .swiper-button-next {
+      width: 10%;
+      height: 100%;
+      background: linear-gradient(
+        98deg,
+        rgba(0, 10, 15, 0.272541) 0%,
+        #000a0f 100%
+      );
+      right: 0;
+      top: 1.375rem;
+      padding-right: 0.5rem;
+    }
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+      font-size: 30px;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    }
+    
+
+  .mySwiper {
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
   }
 
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    .main {
+      padding: 2rem 2rem;
+    }
+  }
 `;
 
 export const Nav = styled.div`
- 
+  display: flex;
+  background: ${({ theme }) => theme.COLORS.GRADIENTS_200};
+  height: 17.2rem;
+
   .container {
+    display: flex;
     width: 100%;
     display: flex;
     align-items: center;
-    height: 260px;
-    position: relative;
 
-    background: ${({ theme }) => theme.COLORS.GRADIENTS_200};
-
-    > img {
+    .desktop {
+      max-width: 100%;
+      height: 25rem;
       position: relative;
-      top: -60px;
-      left: -52px;
-      max-width: 700px;
-      max-height: 376px;
-      
+      top: -4rem;
+      left: -4rem;
+    }
+
+    .mobile {
+      display: none;
     }
 
     .description {
@@ -107,15 +105,43 @@ export const Nav = styled.div`
     }
 
     .description h2 {
-      font-size: 40px;
+      font-size: 2.5rem;
       font-weight: 500;
     }
 
     .description p {
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 400;
     }
+ 
+  }
 
+  @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    height: 8rem;
+
+    .images {
+      .desktop {
+        display: none;
+      }
+
+      .mobile {
+        margin-bottom: 1.5rem;
+        margin-left: -1.5rem;
+        display: block;
+      }
+    }
+
+    .container {
+      .description {
+        font-size: 1px;
+        display: block;
+        flex-wrap: nowrap;
+      }
+
+      .description h2 {
+        font-size: 1.5rem;
+      }
+    }
   }
 `;
 

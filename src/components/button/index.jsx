@@ -7,7 +7,7 @@ export function Button({ icon: Icon, title, score, ...rest}) {
         {...rest}
         >
             
-             {Icon && <Icon size={30}/>}
+             {Icon && <Icon />}
             {title}
             <span>{score}</span>
         </Container>
