@@ -16,7 +16,7 @@ import { api } from "../../services/api"
 
 import { Container, Nav} from "./style"
 import { useNavigate } from "react-router-dom"
-import img from "../../assets/mobileImg.png"
+import img from "../../assets/mobileimg.png"
 import imgDesktop from "../../assets/desktopImg.png"
  
 
