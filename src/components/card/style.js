@@ -22,7 +22,6 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     justify-content: end;
-    
   }
 
   .favorite.active {
@@ -41,18 +40,16 @@ export const Container = styled.div`
   .favorite {
     cursor: pointer;
   }
-  
+
   .title {
     display: flex;
     text-align: center;
     white-space: nowrap;
-   
-  } 
+  }
 
   .description {
     display: flex;
     text-align: center;
-
   }
   .edit {
     cursor: pointer;
@@ -62,7 +59,6 @@ export const Container = styled.div`
     font-size: 1.5rem;
     align-items: center;
   }
- 
 
   p {
     font-size: 0.875rem;
@@ -112,7 +108,6 @@ export const Container = styled.div`
     width: 16.87rem;
     height: 25.875rem;
     padding: 2rem;
-    
 
     .Img img {
       width: 7.875rem;
@@ -135,9 +130,8 @@ export const Container = styled.div`
     }
 
     .add button {
-      
     }
-    
+
     .button {
       margin-top: 0.5rem;
       width: 100%;
@@ -146,8 +140,11 @@ export const Container = styled.div`
       width: 100%;
       font-size: 1.2rem;
     }
+  }
 
-   
-    
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    .title {
+      font-size: 1rem;
+    }
   }
 `;

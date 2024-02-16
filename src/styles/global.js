@@ -13,11 +13,23 @@ export default createGlobalStyle`
     font-size: 16px;
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-      body {
-        font-size: 10px;
-      }
+      
+        font-size: 15px;
+      
+    }
+
+       
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+        font-size: 14px;
+      
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
+      font-size: 13px;
 
     }
+  
+    
 
   }    
 

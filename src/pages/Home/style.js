@@ -32,38 +32,36 @@ export const Container = styled.div`
   }
 
   .swiper-button-prev {
-      justify-content: start;
-      width: 10%;
-      height: 100%;
-      background: linear-gradient(
-        98deg,
-        #000a0f 0%,
-        rgba(0, 10, 15, 0.272541) 100%
-      );
+    justify-content: start;
+    width: 10%;
+    height: 100%;
+    background: linear-gradient(
+      98deg,
+      #000a0f 0%,
+      rgba(0, 10, 15, 0.272541) 100%
+    );
 
-      left: 0px;
-      top: 1.375rem;
-    }
-    
+    left: 0px;
+    top: 1.375rem;
+  }
 
-    .swiper-button-next {
-      width: 10%;
-      height: 100%;
-      background: linear-gradient(
-        98deg,
-        rgba(0, 10, 15, 0.272541) 0%,
-        #000a0f 100%
-      );
-      right: 0;
-      top: 1.375rem;
-      padding-right: 0.5rem;
-    }
-    .swiper-button-prev::after,
-    .swiper-button-next::after {
-      font-size: 30px;
-      color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    }
-    
+  .swiper-button-next {
+    width: 10%;
+    height: 100%;
+    background: linear-gradient(
+      98deg,
+      rgba(0, 10, 15, 0.272541) 0%,
+      #000a0f 100%
+    );
+    right: 0;
+    top: 1.375rem;
+    padding-right: 0.5rem;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 30px;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+  }
 
   .mySwiper {
     margin-top: 1.5rem;
@@ -73,6 +71,22 @@ export const Container = styled.div`
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
     .main {
       padding: 2rem 2rem;
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    .main {
+      
+    }
+
+    .gradient {
+    
+
+      .meals {
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
     }
   }
 `;
@@ -113,7 +127,6 @@ export const Nav = styled.div`
       font-size: 1rem;
       font-weight: 400;
     }
- 
   }
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
@@ -140,6 +153,25 @@ export const Nav = styled.div`
 
       .description h2 {
         font-size: 1.5rem;
+      }
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    height: 8rem;
+
+    .container {
+      .description {
+        display: block;
+        flex-wrap: nowrap;
+      }
+
+      .description h2 {
+        font-size: 0.8rem;
+      }
+
+      .description p {
+        font-size: 0.5rem;
       }
     }
   }

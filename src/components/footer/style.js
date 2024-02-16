@@ -41,11 +41,26 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
      padding: 0.9rem;
-    
-     >footer {
-      > p {
-        font-size: 0.7rem;
-      }
+
+     > footer {
+       > p {
+         font-size: 0.7rem;
+       }
      }
+   }
+
+   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    padding: 0.1rem;
+
+    > footer {
+      div {
+        > p {
+          font-size: 1rem;
+        }
+      }
+      > p {
+        font-size: 0.5rem;
+      }
+    }
    }
  `;

@@ -89,13 +89,13 @@ export const Container = styled.div`
 
     .button {
       display: flex;
-      justify-content: flex-end;
+     
       gap: 2rem;
       margin-top: 28px;
     }
 
     .button button {
-      width: 172px;
+      width: 100%;
       background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
     }
 
@@ -135,10 +135,18 @@ export const Container = styled.div`
         overflow: hidden;
       }
 
-     
-
       .value {
         width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    > main {
+      padding: 2rem;
+
+      .button {
+        gap: 0.5rem;
       }
     }
   }

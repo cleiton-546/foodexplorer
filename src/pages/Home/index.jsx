@@ -23,7 +23,6 @@ import imgDesktop from "../../assets/desktopImg.png"
 export function Home( ) {
     const [search, setSearch] = useState("");
     const [meals, setMeals] = useState([]);
-    const [ingredients, setIngredients] = useState("");
     const [menuIsOpen, setMenuIsOpen] = useState(false) 
     
     const navigate = useNavigate(); 
@@ -35,14 +34,14 @@ export function Home( ) {
     function handleEdit(id) {
         navigate(`/edit/${id}`)
     }
-
+   
     useEffect(() => {
       async function fetchMeals() {
-        const response = await api.get(`/meals?title=${search}&ingredients=${ingredients}`);
+        const response = await api.get(`/meals?title=${search}`);
         setMeals(response.data)
       }
       fetchMeals()
-    }, [search, ingredients]);
+    }, [search ]);
    
     return (
      
@@ -54,12 +53,17 @@ export function Home( ) {
         onCloseMenu={() => setMenuIsOpen(false)}
         /> 
         <Header 
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => {
+          setSearch(e.target.value)
+          
+        }}
+       
         onOpenMenu={() => setMenuIsOpen(true)}/>
         
         <main className="main" >
         <Nav>
             <div className="container">
+              
               <div className="images">
                <img
                   className="desktop"

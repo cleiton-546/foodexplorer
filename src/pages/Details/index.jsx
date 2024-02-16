@@ -18,6 +18,7 @@ import { SideMenu } from "../../components/sideMenu";
 
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
+import { IoContrastOutline } from "react-icons/io5";
 
 
 export function Details() {
@@ -62,7 +63,7 @@ export function Details() {
         setData(response.data);
         
       }
-      fetchNote() 
+      fetchNote()  
     }, [] );  
       
     return(

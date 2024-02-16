@@ -33,5 +33,20 @@ export const Container = styled.div`
     align-items: center;
     gap: 1rem;
   }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    div {
+      gap: 0.5rem;
+      h1 {
+        font-size: 1.2rem;
+      }
+
+     svg {
+       margin-bottom: 8px;
+     }
+    }
+
+   
+  }
 `;
 
