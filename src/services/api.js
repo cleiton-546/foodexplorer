@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://api-food-bdb2.onrender.com",
+  baseURL: "http://localhost:3000",
   withCredentials: true,
 });

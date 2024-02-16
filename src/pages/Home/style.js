@@ -130,6 +130,7 @@ export const Nav = styled.div`
   }
 
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    margin-top: 2rem;
     height: 8rem;
 
     .images {
@@ -138,7 +139,7 @@ export const Nav = styled.div`
       }
 
       .mobile {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
         margin-left: -1.5rem;
         display: block;
       }
@@ -167,7 +168,8 @@ export const Nav = styled.div`
       }
 
       .description h2 {
-        font-size: 0.8rem;
+        font-size: 1rem;
+        margin-bottom: 4px;
       }
 
       .description p {

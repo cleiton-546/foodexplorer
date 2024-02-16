@@ -55,14 +55,12 @@ export const Form = styled.form`
     height: 100%;
     flex-direction: column;
     align-items: center;
-    
 
     h2 {
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
       margin-bottom: 32px;
       font-size: 2rem;
       font-weight: 500;
-
     }
 
     a {
@@ -82,21 +80,24 @@ export const Form = styled.form`
   .input input {
     outline: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100};
     margin-bottom: 32px;
-    
   }
 
   .input h3 {
     margin-bottom: 8px;
   }
-  
+
   @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
     width: 100%;
     margin: 0;
     margin-top: 2rem;
-    
   }
- 
-  `; 
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    div {
+      padding: 0.5rem;
+    }
+  }
+`; 
 
 
 

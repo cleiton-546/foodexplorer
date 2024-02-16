@@ -38,7 +38,7 @@ export const Container = styled.div`
     div {
       gap: 0.5rem;
       h1 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
       }
 
      svg {
