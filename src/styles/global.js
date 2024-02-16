@@ -6,14 +6,12 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-Sizing: border-box;
-
   }
 
   :root {
     font-size: 16px;
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-      
         font-size: 15px;
       
     }
@@ -25,11 +23,9 @@ export default createGlobalStyle`
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.XS}) {
-      font-size: 13px;
+      font-size: 12px;
 
     }
-  
-    
 
   }    
 
@@ -54,8 +50,6 @@ export default createGlobalStyle`
     svg:hover, button:hover, a:hover {
         filter: brightness(0.9);
     }
-
-    
 
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {

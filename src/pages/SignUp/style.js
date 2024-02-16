@@ -3,7 +3,7 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   display: flex;
-  height: 100vh;
+  height: 100%;
 
   justify-content: space-between;
 
@@ -33,7 +33,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
-    padding: 1rem;
+    padding: 2rem;
    
   }
 `;
